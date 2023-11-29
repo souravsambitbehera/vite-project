@@ -14,7 +14,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 800,
+  width: 1200,
   height:600,
   // minHeight: 400,
   bgcolor: "background.paper",
@@ -48,22 +48,29 @@ const App = () => {
   }
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}
+       data-testid="open-modal-button"
+      >Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+       
+       
       >
-        <Box sx={style}>
+        <Box sx={style} data-testid="modal-button"
+>
           <Styled_Box_Div>
             <Styled_Products_ul>
-              {filterProducts.map((product) => (
+              {filterProducts.map((product) =>
+              // console.log(typeof product)
+              (
                 <Styled_Products_li
                   key={product.id}
                   onClick={() => handleProductDataClick(product)}
                 >
-                  {product.title.slice(0, 4)}...
+                  {product.title.slice(0, 8)}...
                 </Styled_Products_li>
               ))}
             </Styled_Products_ul>
